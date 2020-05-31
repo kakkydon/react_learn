@@ -8,6 +8,7 @@ import InputBase from '@material-ui/core/InputBase';
 
 import flower from '../../assets/images/flower.jpg';
 
+// CSS定義
 const useStyle = makeStyles(() =>
     createStyles({
         background: {
@@ -28,15 +29,17 @@ const useStyle = makeStyles(() =>
 )
 
 const TopMain: FC = () => {
+    // cssを設定するための関数
     const classes = useStyle();
     // const[値を保持する変数,変数の値を変える関数]=useState(初期値);
     const [keyword, setKeyword] = useState("")
+    // 画面遷移を定義する基幹画面でのルート定義と連動
     const history = useHistory();
-
+    // 引数で入力された値を受け取って、値を保持
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setKeyword(event.target.value);
     }
-
+    // ボタンクリック時、下記URLに画面遷移
     const handleSubmit = () => {
         history.push("/search/" + keyword);
     }
@@ -51,7 +54,6 @@ const TopMain: FC = () => {
                     onChange={handleChange}
                 />
             </Paper>
-
         </div>
     )
 }

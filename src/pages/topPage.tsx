@@ -9,6 +9,7 @@ import {
 import ResultPage from './resultPage';
 import DownloadPage from './downloadPage';
 
+// 基幹ページみたいなもの。react-rooter-domでURLとページをマッピングしている
 const TopPage: FC = () => {
     return (
         <Router>

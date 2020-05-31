@@ -22,10 +22,13 @@ const useStyles = makeStyles(() =>
 );
 
 const DownloadPage: FC = () => {
+    // 別途定義した型定義クラス（types）で値を保持する
     const [data, setData] = useState<TileData[]>([]);
+    // URLのget値を受け取れる
     const { keyword } = useParams();
     const classes = useStyles();
 
+    // FireStorageからデータを取得して、setDataでデータを保持
     const getData = async (searchWord: string | undefined) => {
         const db = firebase.firestore();
         const tileDataRef = db.collection("tileData");
@@ -41,6 +44,7 @@ const DownloadPage: FC = () => {
     }
 
     // 更新されたときに呼ばれないようにするため、引数に空の配列
+    // これがないと、無限ループ。レンダリングの後に呼ばれる。
     useEffect(() => {
         getData(keyword);
     }, []);
@@ -82,5 +86,4 @@ const DownloadPage: FC = () => {
         </div>
     )
 }
-
 export default DownloadPage;
